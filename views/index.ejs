@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Travel Journal</title>
+    <link rel='stylesheet' href="/css/styles.css">
+  </head>
+  <body>
+    <h1>Travel journal</h1>
+    <p>A place to store all of your travel notes and memories</p>
+    <% if (user) { %>
+      <h2>Welcome to the app, <%= user.username %>!</h2>
+      <p>
+        <a href="/auth/signout">Sign out</a>
+      </p>
+      <% } else { %>
+      <h2>Welcome to the app, guest.</h2>
+      <p>
+        <a href="/auth/signup">Sign up</a> or <a href="/auth/signin">sign in</a>.
+      </p>
+    <% } %>
+
+  </body>
+</html>
