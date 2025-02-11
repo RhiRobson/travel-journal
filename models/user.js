@@ -2,18 +2,18 @@ const mongoose = require("mongoose");
 
 
 const journalSchema = new mongoose.Schema({
-    City: {
+    city: {
         type:String,
     },
-    Country: {
+    country: {
         type: String,
         required: true, 
     },
-    Entry: {
+    entry: {
         type: String,
         required: true,
     },
-    Review: {
+    review: {
         type: String,
         enum: ['1 Star', '2 Stars', '3 Stars', '4 Stars', '5 Stars'],
       },

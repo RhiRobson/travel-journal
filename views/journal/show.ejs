@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= journal.country %></title> 
+    <link rel='stylesheet' href="/css/styles.css">
+  </head>
+  
+  <body>
+    <h1>Country:<%= journal.country %></h1>
+    <p>City: <%= journal.city %></p>
+    <p>Journal Entry: <%=  journal.entry %></p>
+    <p>Review of visit: <%= journal.review %></p>
+
+    <a href="/users/<%= userId %>/journals/<%= journal._id %>/edit">Edit Journal</a>
+
+    <a href= '/users/<%=userId %>'>Back to Passport Page</a>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit <%= journal.country %></title> 
+    <link rel='stylesheet' href="/css/auth.css">
+  </head>
+  
+  <body>
+
+    <h1>Edit <%= journal.country %> - <%= journal.city %></h1> 
+
+    <form action="/users/<%= userId %>/journals/<%= journal._id %>?_method=PUT" method="post">
+
+      <label for="entry">Journal Entry:</label>
+      <textarea name="entry" id="entry"><%= journal.entry %></textarea>
+      
+      <label for="review">Review:</label>
+      <select id="review" name="review">
+      <option value="5 Stars">5 Stars</option>
+      <option value="4 Stars">4 Stars</option>
+      <option value="3 Stars">3 Stars</option>
+      <option value="2 Stars">2 Stars</option>
+      <option value="1 Star">1 Star</option>
+      </select>
+    
+        <button type="submit">Edit Journal Entry</button>
+    </form>
+
+    <br>
+    <br>
+    
+    <form action="/users/<%= userId %>/journals/<%= journal._id %>?_method=DELETE" method="post">
+        <button type="submit">Delete Journal Entry</button>
+    </form>
+    <br>
+    <br>
+
+    <a href= '/users/<%=userId %>'>Back to Passport Page</a>
+  </body>
+</html>

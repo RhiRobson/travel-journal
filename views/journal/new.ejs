@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+    <link rel='stylesheet' href="/css/auth.css">
+</head>
+<body>
+
+  <h1>Enter your Travel Journal details</h1>
+
+  <form action="/users/<%= userId %>/journals" method="post">
+    <label for="city">City:</label>
+    <input type="text" name="city" id="city" />
+  
+    <label for="country">Country:</label>
+    <input type="text" name="country" id="country" />
+  
+    <label for="entry">Journal Entry:</label>
+    <textarea name="entry" id="entry"></textarea>
+  
+
+    <label for="review">Review:</label>
+    <select id="review" name="review">
+      <option value="5 Stars">5 Stars</option>
+      <option value="4 Stars">4 Stars</option>
+      <option value="3 Stars">3 Stars</option>
+      <option value="2 Stars">2 Stars</option>
+      <option value="1 Star">1 Star</option>
+    </select>
+  
+    <button type="submit">Add Journal Entry</button>
+  </form>
+      
+</body>
+</html>
+

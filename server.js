@@ -6,6 +6,7 @@ const app = express();
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const session = require('express-session');
+const methodOverride = require('method-override');
 const User = require('./models/user.js');
 
 
@@ -17,6 +18,7 @@ mongoose.connection.on('connected', () => {
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true}));
+app.use(methodOverride('_method'));
 app.use(
     session({
       secret: process.env.SESSION_SECRET,
@@ -34,69 +36,82 @@ app.get('/error', (req, res) => {
     res.render('error.ejs');
 })
 
-app.get('/auth/signup', (req, res) => {
-    res.render(`auth/sign-up.ejs`);
+const authController = require('./controllers/auth');
+app.use('/auth', authController);
+
+app.get('/users/:id', async (req, res) => {
+    const userId = req.params.id;
+    const user = await User.findById(userId);
+    res.render('user/home.ejs', {user})
 })
 
-app.get('/auth/signin', (req, res) => {
-    res.render(`auth/sign-in.ejs`);
+app.get('/users/:id/journals/new', async (req, res) => {
+    const userId = req.params.id;
+    res.render('journal/new.ejs', {userId});
 })
 
-app.post('/auth/signup', async (req, res) => {
-    try {
+app.get('/users/:id/journals/:journalId', async (req, res) => {
+    const userId = req.params.id;
+    const journalId = req.params.journalId;
 
-    const username = req.body.username;
-    const existingUser = await User.findOne({ username});
-
-    if (existingUser) {
-        return res.send('Username already exists');
-    }
-
-    const password = req.body.password;
-    const confirmPassword = req.body.confirmPassword;
-
-    if (password !== confirmPassword) { 
-       return res.send('Passwords do not match');
-    }
-
-    const hashedPassword = await bcrypt.hashSync(password, 10);
-
-    await User.create({ username, password: hashedPassword});
-
-    res.redirect('/auth/signin');
-
-    }catch(error) {
-        console.log(error);
-        res.redirect('/error');
-    }
+    const user = await User.findById(userId);
+    const journal = user.passport.id(journalId);
+    
+    res.render('journal/show.ejs', {journal, userId});
 })
 
-app.post('/auth/signin', async (req, res) => {
-    try {
-    const username = req.body.username;
-    const existingUser = await User.findOne({username});
-    if (!existingUser) {
-        return res.send('Username or password is incorrect');
-    }
+app.get('/users/:id/journals/:journalId/edit', async (req, res) => {
+    const userId = req.params.id;
+    const journalId = req.params.journalId;
 
-    const password = req.body.password;
-    const isPasswordValid = await bcrypt.compare(password, existingUser.password);
+    const user = await User.findById(userId);
+    const journal = user.passport.id(journalId);
+    
+    res.render('journal/edit.ejs', {journal, userId});
+})
 
-    if (!isPasswordValid) {
-        return res.send('Username or password is incorrect');
-    }
+app.post('/users/:id/journals', async (req, res) => {
+    const userId = req.params.id;
+    const city = req.body.city;
+    const country = req.body.country;
+    const entry = req.body.entry;
+    const review = req.body.review;
 
-    req.session.user = {
-        username: existingUser.username,
-        id: existingUser._id,   
-    };
+    const user = await User.findById(userId);
+    user.passport.push({city, country, entry, review});
+    await user.save();
 
-    res.redirect('/');
+    res.redirect(`/users/${userId}`)
+})
 
-    }catch(error) {
-    console.log(error);
-    res.redirect('/error');
-    }
+app.put('/users/:id/journals/:journalId', async (req, res) => {
+    const userId = req.params.id;
+    const journalId = req.params.journalId;
+    const newEntry = req.body.entry;
+    const newReview = req.body.review;
+
+    const user = await User.findById(userId);
+    const journal = user.passport.id(journalId);
+
+    journal.entry = newEntry;
+    journal.review = newReview;
+
+    await user.save();
+
+    res.redirect(`/users/${userId}/journals/${journalId}`);
+})
+
+app.delete('/users/:id/journals/:journalId', async (req, res) => {
+    const userId = req.params.id;
+    const journalId = req.params.journalId;
+
+    const user = await User.findById(userId);
+
+    user.passport.pull({_id: journalId})
+
+    await user.save();
+
+    res.redirect(`/users/${userId}`);
 })
 
 app.listen(PORT, () => {
