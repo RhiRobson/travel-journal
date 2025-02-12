@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,23 +10,22 @@
   <body>
     <nav>
       <% if (user) { %>
-          <a href="/">Home</a>
-          <a href= ''>Passport Page</a>
+          <a href= "/users/<%= user.id %>">Passport Page</a>
           <a href="/auth/signout">Sign out</a>
       <% } %>
     </nav>
 
     <h1>Travel Journal</h1>
-    <p>A place to store all of your travel notes and memories</p>
+    <p>The perfect place to store all of the memories of your adventures!</p>
     <% if (user) { %>
       <h2>Welcome to the app, <%= user.username %>!</h2>
       <p>
-        <a href="/users/<%= userId %>" class="button">Passport Page</a>
+        <a href="/users/<%= user.id %>" class="button">Passport Page</a>
       </p>
       <% } else { %>
-      <h2>Welcome to the app, guest.</h2>
+      <h2>What are you waiting for? Sign up now!</h2>
       <p>
-        <a href="/auth/signup">Sign up</a> <a href="/auth/signin">Sign in</a>
+        <a href="/auth/signup"class=button>Sign up</a> <a href="/auth/signin" class="button">Sign in</a>
       </p>
     <% } %>
 

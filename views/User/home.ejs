@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,9 +13,9 @@
             <a href="/auth/signout">Sign out</a>
       </nav>
 
-    <h1>Welcome to your travel journal <%= user.username %></h1>
+    <h1>Welcome to your Passport Page <%= user.username %></h1>
 
-    <h2>This is your passport page where you can view your travel journal entries.</h2>
+    <h2>This is where you can view your travel journal entries.</h2>
 
     <p>Countries you have visited so far:</p>
     <% if (user.passport.length > 0) { %>
@@ -32,4 +33,3 @@
     
 </body>
 </html>
-
