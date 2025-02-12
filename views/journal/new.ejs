@@ -7,23 +7,28 @@
     <link rel='stylesheet' href="/css/auth.css">
 </head>
 <body>
+
   <nav>
-    <a href="/">Journal Home</a>
+    <a href="/">Home</a>
+    <a href= '/users/<%=userId %>'>Passport Page</a>
     <a href="/auth/signout">Sign out</a>
-  </nav>
+</nav>
 
   <h1>Enter your Travel Journal details</h1>
 
   <form action="/users/<%= userId %>/journals" method="post">
     <label for="city">City:</label>
     <input type="text" name="city" id="city" />
-  
+  <br>
+  <br>
     <label for="country">Country:</label>
     <input type="text" name="country" id="country" />
-  
+    <br>
+    <br>
     <label for="entry">Journal Entry:</label>
     <textarea name="entry" id="entry"></textarea>
-  
+    <br>
+    <br>
 
     <label for="review">Review:</label>
     <select id="review" name="review">
@@ -33,7 +38,8 @@
       <option value="2 Stars">2 Stars</option>
       <option value="1 Star">1 Star</option>
     </select>
-  
+    <br>
+    <br>
     <button type="submit">Add Journal Entry</button>
   </form>
       

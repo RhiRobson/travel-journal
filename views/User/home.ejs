@@ -8,12 +8,15 @@
 </head>
 <body>
     <nav>
-        <a href="/">Journal Home</a>
-        <a href="/auth/signout">Sign out</a>
+            <a href="/">Home</a>
+            <a href="/auth/signout">Sign out</a>
       </nav>
-    <h1>Welcome to your travel journal, <%= user.username %>!</h1>
 
-    <h2>Countries visited so far</h2>
+    <h1>Welcome to your travel journal <%= user.username %></h1>
+
+    <h2>This is your passport page where you can view your travel journal entries.</h2>
+
+    <p>Countries you have visited so far:</p>
     <% if (user.passport.length > 0) { %>
     <ul>
         <% user.passport.forEach(journal => { %>
@@ -24,7 +27,9 @@
     <p>No Counties visited - time to book a ticket!</p>
     <% } %>
 
-    <a href="/users/<%= user._id%>/journals/new">Add a new Journal entry</a>
+    <a href="/users/<%= user._id %>/journals/new" class="button">Add a new Journal entry</a>
+
+    
 </body>
 </html>
 

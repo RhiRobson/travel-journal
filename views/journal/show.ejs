@@ -9,16 +9,16 @@
   
   <body>
     <nav>
-      <a href="/">Journal Home</a>
-      <a href="/auth/signout">Sign out</a>
+          <a href="/">Home</a>
+          <a href= '/users/<%=userId %>'>Passport Page</a>
+          <a href="/auth/signout">Sign out</a>
     </nav>
+
     <h1>Country:<%= journal.country %></h1>
     <p>City: <%= journal.city %></p>
     <p>Journal Entry: <%=  journal.entry %></p>
     <p>Review of visit: <%= journal.review %></p>
 
-    <a href="/users/<%= userId %>/journals/<%= journal._id %>/edit">Edit Journal</a>
-
-    <a href= '/users/<%=userId %>'>Back to Passport Page</a>
+    <a href="/users/<%= userId %>/journals/<%= journal._id %>/edit" class="button">Edit Journal</a>
   </body>
 </html>
