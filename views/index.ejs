@@ -7,6 +7,12 @@
     <link rel='stylesheet' href="/css/styles.css">
   </head>
   <body>
+    <nav>
+      <% if (user) { %>
+      <a href="/">Journal Home</a>
+      <a href="/auth/signout">Sign out</a>
+      <% } %>
+    </nav>
     <h1>Travel journal</h1>
     <p>A place to store all of your travel notes and memories</p>
     <% if (user) { %>
