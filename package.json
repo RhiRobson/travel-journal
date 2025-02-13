@@ -13,7 +13,8 @@
   "version": "1.0.0",
   "description": "Travel journal app",
   "main": "server.js",
-  "scripts": {
+  "scripts": { 
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Rhiannon Robson",
