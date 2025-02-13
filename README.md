@@ -21,4 +21,3 @@ Technologies used: JavaScript, Express, Mongoose, MongoDB Atlas, CSS
 Next steps:
   - I would like to be able to add pictures to the journal posts as well being able to share them in some sort of newsfeed (homepage) whereby the differnet users could interact with each others posts.
 
-This is everything.

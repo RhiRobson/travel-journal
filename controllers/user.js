@@ -6,7 +6,7 @@ const User = require('../models/user.js');
 router.get('/:id', async (req, res) => {
     const userId = req.params.id;
     const user = await User.findById(userId);
-    res.render('user/home.ejs', {user})
+    res.render('users/home.ejs', {user})
 })
 
 router.get('/:id/journals/new', async (req, res) => {
