@@ -8,11 +8,8 @@
     <link rel='stylesheet' href="/css/styles.css">
 </head>
 <body>
-    <nav>
-            <a href="/">Home</a>
-            <a href="/auth/signout">Sign out</a>
-      </nav>
-
+    <%- include('../partials/_navbar.ejs') %>
+    
     <h1>Welcome to your Passport Page <%= user.username %></h1>
 
     <h2>This is where you can view your travel journal entries.</h2>

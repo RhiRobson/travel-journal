@@ -9,16 +9,18 @@
   
   <body>
     <nav>
-          <a href="/">Home</a>
-          <a href= '/users/<%=userId %>'>Passport Page</a>
-          <a href="/auth/signout">Sign out</a>
+    <img src="/images/logo.png" alt="Logo" class="logo">
     </nav>
 
     <h1>Country:<%= journal.country %></h1>
+    <p>Date: <%= new Date(journal.date).toLocaleDateString('en-UK') %></p>
     <p>City: <%= journal.city %></p>
     <p>Journal Entry: <%=  journal.entry %></p>
     <p>Review of visit: <%= journal.review %></p>
 
     <a href="/users/<%= userId %>/journals/<%= journal._id %>/edit" class="button">Edit Journal</a>
+    <br>
+    <br>
+    <a href="/users/<%= userId %>" class="button">Back to Passport Page</a>
   </body>
 </html>

@@ -9,10 +9,8 @@
   
   <body>
     <nav>
-      <a href="/">Home</a>
-      <a href= '/users/<%=userId %>'>Passport Page</a>
-      <a href="/auth/signout">Sign out</a>
-</nav>
+      <img src="/images/logo.png" alt="Logo" class="logo">
+      </nav>
 
     <h1>Edit <%= journal.country %> - <%= journal.city %></h1> 
 
@@ -40,7 +38,10 @@
     <form action="/users/<%= userId %>/journals/<%= journal._id %>?_method=DELETE" method="post">
         <button type="submit">Delete Journal Entry</button>
     </form>
+
     <br>
     <br>
+    <a href="/users/<%= userId %>" class="button">Back to Passport Page</a>
+
   </body>
 </html>

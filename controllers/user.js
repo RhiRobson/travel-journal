@@ -36,13 +36,14 @@ router.get('/:id/journals/:journalId/edit', async (req, res) => {
 
 router.post('/:id/journals', async (req, res) => {
     const userId = req.params.id;
+    const date = req.body.date;
     const city = req.body.city;
     const country = req.body.country;
     const entry = req.body.entry;
     const review = req.body.review;
 
     const user = await User.findById(userId);
-    user.passport.push({city, country, entry, review});
+    user.passport.push({date, city, country, entry, review});
     await user.save();
 
     res.redirect(`/users/${userId}`)

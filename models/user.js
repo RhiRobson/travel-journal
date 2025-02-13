@@ -2,6 +2,9 @@ const mongoose = require("mongoose");
 
 
 const journalSchema = new mongoose.Schema({
+    date: {
+        type:Date,
+    },
     city: {
         type:String,
     },

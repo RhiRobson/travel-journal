@@ -25,6 +25,8 @@ app.use(
     })
   );
 
+app.set('view engine', 'ejs');
+
 app.get('/', (req, res) => {
     const user = req.session.user;
     res.render('index.ejs', {user})
@@ -33,6 +35,7 @@ app.get('/', (req, res) => {
 app.get('/error', (req, res) => {
     res.render('error.ejs');
 })
+
 
 const authController = require('./controllers/auth');
 app.use('/auth', authController);
