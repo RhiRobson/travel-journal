@@ -8,40 +8,36 @@
   </head>
   
   <body>
+
     <nav>
       <img src="/images/logo.png" alt="Logo" class="logo">
-      </nav>
+    </nav>
 
     <h1>Edit <%= journal.country %> - <%= journal.city %></h1> 
 
     <form action="/users/<%= userId %>/journals/<%= journal._id %>?_method=PUT" method="post">
-    
       <label for="entry">Journal Entry:</label>
-      <textarea name="entry" id="entry"><%= journal.entry %></textarea>
-      <br>
-      <br>
-      <br>
+      <textarea name="entry" id="entry" required><%= journal.entry %></textarea>
+        <br>
+        <br>
       <label for="review">Review:</label>
-      <select id="review" name="review">
-      <option value="5 Stars">5 Stars</option>
-      <option value="4 Stars">4 Stars</option>
-      <option value="3 Stars">3 Stars</option>
-      <option value="2 Stars">2 Stars</option>
-      <option value="1 Star">1 Star</option>
+      <select id="review" name="review" required>
+        <option value="5 Stars">5 Stars</option>
+        <option value="4 Stars">4 Stars</option>
+        <option value="3 Stars">3 Stars</option>
+        <option value="2 Stars">2 Stars</option>
+        <option value="1 Star">1 Star</option>
       </select>
-    <br>
-    <br>
+      <br>
+      <br>
         <button type="submit">Edit Journal Entry</button>
     </form>
 
-    
     <form action="/users/<%= userId %>/journals/<%= journal._id %>?_method=DELETE" method="post">
         <button type="submit">Delete Journal Entry</button>
     </form>
-
     <br>
     <br>
     <a href="/users/<%= userId %>" class="button">Back to Passport Page</a>
-
   </body>
 </html>

@@ -9,10 +9,11 @@
   
   <body>
     <nav>
-    <img src="/images/logo.png" alt="Logo" class="logo">
+      <img src="/images/logo.png" alt="Logo" class="logo">
     </nav>
 
     <h1>Country:<%= journal.country %></h1>
+    
     <p>Date: <%= new Date(journal.date).toLocaleDateString('en-UK') %></p>
     <p>City: <%= journal.city %></p>
     <p>Journal Entry: <%=  journal.entry %></p>

@@ -50,7 +50,6 @@ h2 {
     font-size: 2.2em;
 }
 
-
 p {
     color: #222;
     text-align: center;
@@ -93,8 +92,8 @@ button {
     transition: background-color 0.3s, transform 0.2s;
 }
 
-
 button:hover {
     background-color: #e64a19;
     transform: scale(1.05);
 }
+

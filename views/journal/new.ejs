@@ -9,42 +9,39 @@
 <body>
   <nav>
     <img src="/images/logo.png" alt="Logo" class="logo">
-    </nav>
+  </nav>
 
   <h1>Enter your Travel Journal details</h1>
 
   <form action="/users/<%= userId %>/journals" method="post">
     <label for="date">Date:</label>
-    <input type="date" name="date" id="date" />
+    <input type="date" name="date" id="date" required />
   <br>
   <br>
-    
     <label for="city">City:</label>
-    <input type="text" name="city" id="city" />
+    <input type="text" name="city" id="city" required/>
   <br>
   <br>
     <label for="country">Country:</label>
-    <input type="text" name="country" id="country" />
-    <br>
-    <br>
+    <input type="text" name="country" id="country" required />
+  <br>
+  <br>
     <label for="entry">Journal Entry:</label>
-    <textarea name="entry" id="entry"></textarea>
-    <br>
-    <br>
-
+    <textarea name="entry" id="entry" required></textarea>
+  <br>
+  <br>
     <label for="review">Review:</label>
-    <select id="review" name="review">
+    <select id="review" name="review" required>
       <option value="5 Stars">5 Stars</option>
       <option value="4 Stars">4 Stars</option>
       <option value="3 Stars">3 Stars</option>
       <option value="2 Stars">2 Stars</option>
       <option value="1 Star">1 Star</option>
     </select>
-    <br>
-    <br>
+  <br>
+  <br>
     <button type="submit">Add Journal Entry</button>
-  </form>
-      
+  </form>   
 </body>
 </html>
 

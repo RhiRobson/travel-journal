@@ -7,7 +7,6 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const methodOverride = require('method-override');
 
-
 const PORT = process.env.PORT || 3000;
 mongoose.connect(process.env.MONGODB_URI);
 mongoose.connection.on('connected', () => {
@@ -23,7 +22,7 @@ app.use(
       resave: false,
       saveUninitialized: true,
     })
-  );
+);
 
 app.set('view engine', 'ejs');
 
@@ -35,7 +34,6 @@ app.get('/', (req, res) => {
 app.get('/error', (req, res) => {
     res.render('error.ejs');
 })
-
 
 const authController = require('./controllers/auth');
 app.use('/auth', authController);
